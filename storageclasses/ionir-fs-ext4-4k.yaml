@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-ext4-4k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: ext4
+  blockSize: "4k"

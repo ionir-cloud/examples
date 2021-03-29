@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-block-16k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: block
+  blockSize: "16k"
