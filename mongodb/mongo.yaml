@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  labels:
+    appdb: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appdb: mongodb
+  serviceName: mongodb
+  template:
+    metadata:
+      labels:
+        appdb: mongodb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongodb
+        image: mongo
+        command:
+          - mongod
+          - "--storageEngine"
+          - wiredTiger
+          - "--bind_ip_all"
+        ports:
+        - containerPort: 27017              
+        volumeMounts:
+        - name: mongo-1
+          mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-1
+      spec:
+        storageClassName: ionir-mongo
+        accessModes: [ "ReadWriteOnce" ]
+        volumeMode: Filesystem
+        resources:
+          requests:
+            storage: 50Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    appdb: mongodb
