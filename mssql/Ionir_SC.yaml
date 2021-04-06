@@ -1,0 +1,91 @@
+##All Storageclases
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-xfs-4k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: xfs
+  blockSize: "4k"
+ 
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-xfs-16k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: xfs
+  blockSize: "16k"
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-ext4-4k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: ext4
+  blockSize: "4k"
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-ext4-16k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: ext4
+  blockSize: "16k"
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-fs-ext4-16k-24h
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: ext4
+  blockSize: 16k
+  historyPolicy: 24hourshistory
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-block-4k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: block
+  blockSize: "4k"
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ionir-block-16k
+provisioner: ionir
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+parameters:
+  type: block
+  blockSize: "16k"

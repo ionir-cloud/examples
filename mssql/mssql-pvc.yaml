@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-server-1
+  labels:
+    app: mssql
+spec:
+  storageClassName: ionir-default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-data-1
+  labels:
+    app: mssql
+spec:
+  storageClassName: ionir-default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-log-1
+  labels:
+    app: mssql
+spec:
+  storageClassName: ionir-default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-backup
+  labels:
+    app: mssql
+spec:
+  storageClassName: ionir-default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

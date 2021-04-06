@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql
+  labels:
+    app: mssql
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mssql
+  template:
+    metadata:
+      labels:
+        app: mssql
+    spec:
+
+      containers:
+        - name: mssql
+          image: mcr.microsoft.com/mssql/server:2017-latest
+          env:
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "IonirP@ssw0rd"
+              #valueFrom:
+               # secretKeyRef:
+                #  name: sa-pass
+                 # key: password
+          ports:
+            - name: mssql
+              containerPort: 1433
+          volumeMounts:
+            - name: mssqlsvr
+              mountPath: /var/opt/mssql
+            - name: mssqldata
+              mountPath: /mssql/data
+            - name: mssqllog
+              mountPath: /mssql/log
+            - name: mssqlbackup
+              mountPath: /mssql/backup
+     
+
+
+      volumes:
+        - name: mssqlsvr
+          persistentVolumeClaim:
+            claimName: mssql-server-1
+        - name: mssqldata
+          persistentVolumeClaim:
+            claimName: mssql-data-1
+        - name: mssqllog
+          persistentVolumeClaim:
+            claimName: mssql-log-1
+        - name: mssqlbackup
+          persistentVolumeClaim:
+            claimName: mssql-backup
+        
