@@ -1,0 +1,12 @@
+apiVersion: crd.ionir.com/v1
+kind: HistoryPolicy
+metadata:
+  name: 6-hour-history
+  namespace: ionir
+spec:
+  daysGranularityRetention: ""
+  hoursGranularityRetention: ""
+  minutesGranularityRetention: ""
+  monthsGranularityRetention: ""
+  policyName: 6-hour-history
+  secondsGranularityRetention: 6h
