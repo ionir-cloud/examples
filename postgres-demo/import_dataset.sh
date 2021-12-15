@@ -2,7 +2,7 @@
 set -e
 
 POD_NAME='postgres-demo-0'													# image-gallery pod name - TODO: get it dynamically
-POD_NAMESPACE="${POD_NAMESPACE:-mongo}"								# namespace where the pod resides - defaults to 'image-gallery'
+POD_NAMESPACE="${POD_NAMESPACE:-postgres}"								# namespace where the pod resides - defaults to 'image-gallery'
 WORK_FILE="http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-complete.csv"													# temporary file to store the list of files in the S3 bucket
 # the https name for the S3 bucket (hosted static webserver by S3)
 #POD_PERSISTENT_DATA_DIR="/persistent_data"									# the ionir volume mount point
