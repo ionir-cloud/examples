@@ -1,0 +1,59 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-demo
+spec:
+  serviceName: "postgres"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        ports:
+        - containerPort: 5432
+          name: postgredb
+        volumeMounts:
+        - name: postgredb
+          mountPath: /var/lib/postgresql/data
+          subPath: postgres
+        resources:
+          limits:
+            hugepages-2Mi: 128Mi
+            memory: 32Gi
+          requests:
+            cpu: 250m
+            memory: 2Gi
+  volumeClaimTemplates:
+  - metadata:
+      name: postgredb
+    spec:
+        storageClassName: ionir-postgres
+        accessModes: [ "ReadWriteOnce" ]
+        volumeMode: Filesystem
+        resources:
+          requests:
+            storage: 250Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  ports:
+  - port: 5432
+    name: postgres   
+  selector:
+    app: postgres
