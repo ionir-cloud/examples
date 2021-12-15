@@ -15,13 +15,13 @@ $$ wget https://datasets.imdbws.com/title.ratings.tsv.gz"
 
 echo "extracting the data"
 kubectl -n ${POD_NAMESPACE} exec ${POD_NAME} -- bash -c "cd /tmp \
-&& tar -x name.basics.tsv.gz \
-$$ tar -x title.akas.tsv.gz \
-$$ tar -x title.basics.tsv.gz \
-$$ tar -x title.crew.tsv.gz \
-$$ tar -x title.episode.tsv.gz \
-$$ tar -x title.principals.tsv.gz \
-$$ tar -x title.ratings.tsv.gz"
+&& tar -xvf name.basics.tsv.gz \
+$$ tar -xvf title.akas.tsv.gz \
+$$ tar -xvf title.basics.tsv.gz \
+$$ tar -xvf title.crew.tsv.gz \
+$$ tar -xvf title.episode.tsv.gz \
+$$ tar -xvf title.principals.tsv.gz \
+$$ tar -xvf title.ratings.tsv.gz"
 
 echo "importing the data"
 kubectl -n ${POD_NAMESPACE} exec ${POD_NAME} -- bash -c "
