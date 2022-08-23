@@ -1,4 +1,4 @@
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 1-hour-history
@@ -8,10 +8,9 @@ spec:
   hoursGranularityRetention: ""
   minutesGranularityRetention: ""
   monthsGranularityRetention: ""
-  policyName: 1-hour-history
   secondsGranularityRetention: 1h
 ---
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 6-hour-history
@@ -21,10 +20,9 @@ spec:
   hoursGranularityRetention: ""
   minutesGranularityRetention: ""
   monthsGranularityRetention: ""
-  policyName: 6-hour-history
   secondsGranularityRetention: 6h
 ---
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 24-hour-history
@@ -34,7 +32,6 @@ spec:
   hoursGranularityRetention: ""
   minutesGranularityRetention: ""
   monthsGranularityRetention: ""
-  policyName: 24-hour-history
   secondsGranularityRetention: 24h
 ---
 apiVersion: storage.k8s.io/v1
