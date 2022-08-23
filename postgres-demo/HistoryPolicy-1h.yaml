@@ -8,5 +8,4 @@ spec:
   hoursGranularityRetention: ""
   minutesGranularityRetention: ""
   monthsGranularityRetention: ""
-  policyName: 1-hour-history
   secondsGranularityRetention: 1h
