@@ -1,4 +1,4 @@
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 1-hour-history
@@ -11,7 +11,7 @@ spec:
   policyName: 1-hour-history
   secondsGranularityRetention: 1h
 ---
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 6-hour-history
@@ -24,7 +24,7 @@ spec:
   policyName: 6-hour-history
   secondsGranularityRetention: 6h
 ---
-apiVersion: crd.ionir.com/v1
+apiVersion: volume.ionir.com/v1
 kind: HistoryPolicy
 metadata:
   name: 24-hour-history
